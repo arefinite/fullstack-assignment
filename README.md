@@ -107,8 +107,8 @@ yarn start
 
 ## Accessing the Application
 
-- The backend server will run on [http://localhost:4000](http://localhost:4000).
-- The frontend server will run on [http://localhost:5173](http://localhost:5173).
+- The backend server will run on [http://localhost:4000](http://localhost:4000)
+- The frontend server will run on [http://localhost:5173](http://localhost:5173)
 
 ## Additional Notes
 
