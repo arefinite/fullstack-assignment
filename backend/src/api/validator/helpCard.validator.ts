@@ -1,3 +1,4 @@
+import { link } from 'fs'
 import { z } from 'zod'
 
 export const helpCardValidationSchema = z.object({
@@ -9,4 +10,5 @@ export const helpCardValidationSchema = z.object({
     .string()
     .min(10, { message: 'Description must be at least 10 characters long' })
     .max(500, { message: 'Description must be at most 500 characters long' }),
+  link: z.string().url({ message: 'Link must be a valid URL' }),
 })

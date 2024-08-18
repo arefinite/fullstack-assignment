@@ -40,13 +40,15 @@ export const getSingleCard = asyncHandler(
 export const createCard = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
     //validate request body
-    const { title, description } = helpCardValidationSchema.parse(req.body)
+    const { title, description, link } = helpCardValidationSchema.parse(
+      req.body
+    )
     //check if title already exists
     const titleExists = await HelpCard.findOne({ title })
     //check if title already exists and error handling
     if (titleExists) return next(createHttpError(400, 'Title already exists'))
     //create new help card
-    const newHelpCard = await HelpCard.create({ title, description })
+    const newHelpCard = await HelpCard.create({ title, description, link })
     //check if help card is created and error handling
     if (!newHelpCard) return next(createHttpError(400, 'Help card not created'))
     //send response
@@ -62,19 +64,23 @@ export const updateCard = asyncHandler(
     //get title from request params
     const { title: paramTitle } = req.params
     //validate request body
-    const { title, description } = helpCardValidationSchema.parse(req.body)
+    const { title, description, link } = helpCardValidationSchema.parse(
+      req.body
+    )
     //get help card by title
     const helpCard = await HelpCard.findOne({ title: paramTitle })
     //check if help card is found and error handling
     if (!helpCard) return next(createHttpError(404, 'Help card not found'))
-    // check i title is already taken
-    const titleExists = await HelpCard.findOne({ title })
-    // check if title already exists and error handling
-    if (titleExists) return next(createHttpError(400, 'Title already exists'))
+    if (title !== paramTitle) {
+      // check i title is already taken
+      const titleExists = await HelpCard.findOne({ title })
+      // check if title already exists and error handling
+      if (titleExists) return next(createHttpError(400, 'Title already exists'))
+    }
     //update help card
     const updateHelpCard = await HelpCard.findOneAndUpdate(
       { title: paramTitle },
-      { title, description },
+      { title, description, link },
       { new: true }
     )
     //check if help card is updated and error handling
