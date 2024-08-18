@@ -14,7 +14,7 @@ export const getAllCards = asyncHandler(
     //check if help cards are found and error handling
     if (!helpCards) return next(createHttpError(404, 'Help cards not found'))
     //send response
-    res.status(200).json({ helpCards })
+    res.status(200).json( helpCards )
   }
 )
 
@@ -30,7 +30,7 @@ export const getSingleCard = asyncHandler(
     //check if help card is found and error handling
     if (!helpCard) return next(createHttpError(404, 'Help card not found'))
     //send response
-    res.status(200).json({ helpCard })
+    res.status(200).json( helpCard )
   }
 )
 
