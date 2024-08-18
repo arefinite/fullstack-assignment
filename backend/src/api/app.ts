@@ -12,8 +12,8 @@ export const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({ origin: config.FRONTEND_URL, credentials: true }))
-if (config.NODE_ENV === 'dev') {
-  app.use(morgan('dev'))
+if (config.NODE_ENV === 'DEV') {
+  app.use(morgan('DEV'))
 }
 app.use(express.static(path.join(__dirname, '../../../client/dist')))
 
