@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <footer className='bg-black text-white'>
       <div className='container mx-auto my-8'>
-        <div className='grid grid-cols-5 text-sm'>
+        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 text-sm'>
           <ul>
             <li className='font-bold text-lg pb-3'>Abstract</li>
             <li>Branches</li>

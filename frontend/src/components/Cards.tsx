@@ -18,7 +18,7 @@ const Cards = ({ searchQuery }: CardsProps) => {
   )
 
   return (
-    <main className='my-8 max-w-5xl mx-auto grid grid-cols-2 gap-6'>
+    <main className='my-8 container md:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6'>
       {filteredCards?.length > 0 ? (
         filteredCards
           ?.toReversed()

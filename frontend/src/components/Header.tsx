@@ -12,10 +12,10 @@ import {
 import CreateForm from './CreateForm'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleClose = () => {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   return (
@@ -23,7 +23,7 @@ const Header = () => {
       <section className='container mx-auto flex justify-between items-center'>
         <h1 className='flex items-center gap-2 text-lg font-semibold'>
           <img src={logo} className='h-8' alt='logo' />
-          <span>Abstract | Help Center</span>
+          <span className='hidden md:block'>Abstract | Help Center</span>
         </h1>
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
