@@ -15,7 +15,7 @@ app.use(cors({ origin: config.FRONTEND_URL, credentials: true }))
 if (config.NODE_ENV === 'DEV') {
   app.use(morgan('DEV'))
 }
-app.use(express.static(path.join(__dirname, '../../../client/dist')))
+app.use(express.static(path.join(__dirname, '../../../frontend/dist')))
 
 //routes
 app.get('/api/v1/ping', (req: Request, res: Response) => {
