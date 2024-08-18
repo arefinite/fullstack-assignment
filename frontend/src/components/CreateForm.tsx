@@ -18,7 +18,11 @@ import { useCreateCard } from '@/services/mutations'
 import toast from 'react-hot-toast'
 import { Loader2 } from 'lucide-react'
 
-const CreateForm = ({ onClose }: { onClose: () => void }) => {
+interface CreateFormProps {
+  onClose: () => void
+}
+
+const CreateForm = ({ onClose }: CreateFormProps) => {
   const form = useForm<CreateCardFormValues>({
     resolver: zodResolver(createCardFormSchema),
     defaultValues: {
@@ -33,8 +37,6 @@ const CreateForm = ({ onClose }: { onClose: () => void }) => {
   const onSubmit: SubmitHandler<CreateCardFormValues> = async data => {
     await createCard(data)
     toast.success('Help card created successfully')
-
-    // Close the dialog box after successful submission
     onClose()
   }
 

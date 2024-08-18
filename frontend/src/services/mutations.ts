@@ -4,6 +4,8 @@ import {
   CreateCardFormValues,
   UpdateCardFormValues,
 } from '@/validators/FormSchema'
+import { AxiosError } from 'axios'
+import toast from 'react-hot-toast'
 
 //create help card mutation
 export const useCreateCard = () => {
@@ -12,25 +14,33 @@ export const useCreateCard = () => {
     mutationFn: (data: CreateCardFormValues) => createCard(data),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['cards'] })
-      console.log('success')
     },
-    onError: () => {
-      console.log('error')
-    },
+    onError: (error: unknown) => {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data?.message || 'An error occurred')
+      } else {
+        toast.error('An unexpected error occurred')
+      }
+    }
   })
 }
 
 //update help card mutation
 export const useUpdateCard = (title: string) => {
   const queryClient = useQueryClient()
+
   return useMutation({
     mutationFn: (data: UpdateCardFormValues) => updateCard(title, data),
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['cards'] })
-      console.log('success')
+      toast.success('Help card updated successfully')
     },
-    onError: () => {
-      console.log('error')
+    onError: (error: unknown) => {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data?.message || 'An error occurred')
+      } else {
+        toast.error('An unexpected error occurred')
+      }
     },
   })
 }
@@ -44,8 +54,12 @@ export const useDeleteCard = () => {
       await queryClient.invalidateQueries({ queryKey: ['cards'] })
       console.log('success')
     },
-    onError: () => {
-      console.log('error')
-    },
+    onError: (error: unknown) => {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data?.message || 'An error occurred')
+      } else {
+        toast.error('An unexpected error occurred')
+      }
+    }
   })
 }
