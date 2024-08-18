@@ -1,8 +1,33 @@
 {
   "name": "abstract-help-center",
   "version": "1.0.0",
-  "description": "api for abstact help center",
+  "description": "api for abstract help center",
   "main": "./src/server.ts",
   "author": "Adnan Arefin",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "build": "yarn && npx tsc"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "http-errors": "^2.0.0",
+    "mongoose": "^8.5.3",
+    "morgan": "^1.10.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/http-errors": "^2.0.4",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.4.0",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
 }
