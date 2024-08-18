@@ -1,0 +1,8 @@
+{
+  "name": "abstract-help-center",
+  "version": "1.0.0",
+  "description": "api for abstact help center",
+  "main": "./src/server.ts",
+  "author": "Adnan Arefin",
+  "license": "MIT"
+}
